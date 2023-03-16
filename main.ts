@@ -77,7 +77,7 @@ radio.onReceivedValue(function (name, value) {
     }
     basic.pause(1000)
     if (第二人 * (我 * 第三人) != 0) {
-        比輸贏(我, 第二人, 第三人)
+        比輸贏(第二人, 我, 第三人)
         basic.pause(5000)
         清空()
     }
