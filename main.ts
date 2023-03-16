@@ -25,38 +25,14 @@ input.onButtonPressed(Button.A, function () {
         }
     }
 })
-function 比輸贏 (第二人: number, 我: number, 第三人: number) {
-    if (我 == 第二人 && 我 == 第三人) {
+function 比輸贏 (me: number, 玩家2: number, 玩家3: number) {
+    if (me * (玩家2 * 玩家3) == 6) {
         basic.showIcon(IconNames.Asleep)
-    } else if (我 == 1 && 第三人 == 2 && 第二人 == 3) {
-        basic.showIcon(IconNames.Asleep)
-    } else if (我 == 1 && 第三人 == 3 && 第二人 == 2) {
-        basic.showIcon(IconNames.Asleep)
-    } else if (我 == 2 && 第三人 == 1 && 第二人 == 3) {
-        basic.showIcon(IconNames.Asleep)
-    } else if (我 == 2 && 第三人 == 3 && 第二人 == 1) {
-        basic.showIcon(IconNames.Asleep)
-    } else if (我 == 3 && 第三人 == 1 && 第二人 == 2) {
-        basic.showIcon(IconNames.Asleep)
-    } else if (我 == 3 && 第三人 == 2 && 第二人 == 1) {
-        basic.showIcon(IconNames.Asleep)
-    } else if (我 == 1 && 第三人 == 1 && 第二人 == 3) {
+    } else if (me == 1 && 玩家2 * 玩家3 == 3) {
         basic.showIcon(IconNames.Happy)
-    } else if (我 == 1 && 第三人 == 3 && 第二人 == 3) {
+    } else if (me == 2 && 玩家2 * 玩家3 == 2) {
         basic.showIcon(IconNames.Happy)
-    } else if (我 == 1 && 第三人 == 3 && 第二人 == 1) {
-        basic.showIcon(IconNames.Happy)
-    } else if (我 == 2 && 第三人 == 2 && 第二人 == 1) {
-        basic.showIcon(IconNames.Happy)
-    } else if (我 == 2 && 第三人 == 1 && 第二人 == 1) {
-        basic.showIcon(IconNames.Happy)
-    } else if (我 == 2 && 第三人 == 1 && 第二人 == 2) {
-        basic.showIcon(IconNames.Happy)
-    } else if (我 == 3 && 第三人 == 2 && 第二人 == 2) {
-        basic.showIcon(IconNames.Happy)
-    } else if (我 == 3 && 第三人 == 2 && 第二人 == 3) {
-        basic.showIcon(IconNames.Happy)
-    } else if (我 == 3 && 第三人 == 3 && 第二人 == 2) {
+    } else if (me == 3 && 玩家2 * 玩家3 == 6) {
         basic.showIcon(IconNames.Happy)
     } else {
         basic.showIcon(IconNames.Sad)
@@ -101,7 +77,7 @@ radio.onReceivedValue(function (name, value) {
     }
     basic.pause(1000)
     if (第二人 * (我 * 第三人) != 0) {
-        比輸贏(第二人, 我, 第三人)
+        比輸贏(我, 第二人, 第三人)
         basic.pause(5000)
         清空()
     }
