@@ -21,8 +21,12 @@ input.onButtonPressed(Button.A, function () {
             # . . # #
             `)
         for (let index = 0; index < 4; index++) {
-            radio.sendValue("a", 1)
+            radio.sendValue(X, 1)
         }
+    } else {
+        X = "a"
+        basic.showString(X)
+        我 = 0
     }
 })
 function 比輸贏 (me: number, 玩家2: number, 玩家3: number) {
@@ -49,8 +53,12 @@ input.onButtonPressed(Button.AB, function () {
             . . # . .
             `)
         for (let index = 0; index < 4; index++) {
-            radio.sendValue("a", 3)
+            radio.sendValue(X, 3)
         }
+    } else {
+        X = "c"
+        basic.showString(X)
+        我 = 0
     }
 })
 input.onButtonPressed(Button.B, function () {
@@ -64,27 +72,50 @@ input.onButtonPressed(Button.B, function () {
             . . # # #
             `)
         for (let index = 0; index < 4; index++) {
-            radio.sendValue("a", 2)
+            radio.sendValue(X, 2)
         }
+    } else {
+        X = "b"
+        basic.showString(X)
+        我 = 0
     }
 })
 radio.onReceivedValue(function (name, value) {
-    if (name == "b") {
-        第二人 = value
-    }
-    if (name == "c") {
-        第三人 = value
+    if (X == "a") {
+        if (name == "b") {
+            第二人 = value
+        }
+        if (name == "c") {
+            第三人 = value
+        }
+    } else if (X == "b") {
+        if (name == "a") {
+            第二人 = value
+        }
+        if (name == "c") {
+            第三人 = value
+        }
+    } else if (X == "c") {
+        if (name == "b") {
+            第二人 = value
+        }
+        if (name == "a") {
+            第三人 = value
+        }
+    } else {
+        basic.showIcon(IconNames.No)
     }
     basic.pause(1000)
-    if (第二人 * (我 * 第三人) != 0) {
-        比輸贏(第二人, 我, 第三人)
+    if (我 * (第三人 * 第三人) != 0) {
+        比輸贏(我, 第二人, 第三人)
         basic.pause(5000)
         清空()
     }
 })
+let X = ""
 let 第二人 = 0
 let 第三人 = 0
 let 我 = 0
 radio.setTransmitPower(7)
 radio.setGroup(69)
-清空()
+我 = 999
